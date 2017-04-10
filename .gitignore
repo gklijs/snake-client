@@ -9,3 +9,4 @@ profiles.clj
 /.lein-*
 /.nrepl-port
 /.idea
+/snake-client.iml

@@ -6,6 +6,7 @@
   :dependencies [[com.cognitect/transit-clj "0.8.300"]
                  [environ "1.1.0"]
                  [org.clojure/clojure "1.8.0"]
+                 [org.clojure/core.async "0.3.442"]
                  [quil "2.6.0"]
                  [snake "0.1.0-SNAPSHOT"]
                  [stylefruits/gniazdo "1.0.0"]]

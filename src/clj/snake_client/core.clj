@@ -1,7 +1,7 @@
 (ns snake-client.core
-  (:require [environ.core :refer [env]]
-            [snake-client.visuals :refer [start-visual]]
-            [snake-client.websocket :refer [init-socket]]))
+  (:require [clojure.core.async :as a]
+            [environ.core :refer [env]]
+            [snake-client.websocket :refer [init-socket game-info]]))
 
 (defn -main
   [& args]
@@ -10,10 +10,7 @@
         websocket-password (env :websocket-password)]
     (if
       (and websocket-uri websocket-username websocket-password)
-      (do
-        (init-socket websocket-uri websocket-username websocket-password)
-        (if (= (env :show-visual "false") "true")
-          (start-visual)))
+      (init-socket websocket-uri websocket-username websocket-password (env :ai-option) (= (env :show-visual "false") "true"))
       (prn "could not start because one of websocket-uri, websocket-username or websocker-password was missing"
            websocket-uri websocket-username websocket-password)
       )))
